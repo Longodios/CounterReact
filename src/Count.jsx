@@ -10,7 +10,7 @@ const Count = ({ms}) => {
         <>
         <div className="container-fluid flex h-32 bg-black w-screen justify-center gap-5">
             <Number ms = {ms}/>
-            <Number/>
+            <Number ms = {ms}/>
             <Number/>
             <Number/>
             <Number/>
