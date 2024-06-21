@@ -2,13 +2,16 @@ import React, { useState, useEffect } from "react";
 import Number from "./Number";
 import Clock from "./Clock";
 import ButtonReset from "./ButtonReset";
+import ButtonStop from "./ButtonStop";
+import ButtonStart
+ from "./ButtonStart";
 
 
 
 
 const Count = () => {
   console.log("Componente");
-
+  const [isRunning, setIsRunning] = useState(false)
   const [ms, SetMs] = useState(0);
   const [decimal, SetDecimal] = useState(0);
   const [hour, SetHour] = useState(0);
@@ -17,20 +20,34 @@ const Count = () => {
   const [lunarYear , SetLunar] = useState(0);
 
   const funcReset  = () => {
-    if (ms > 1){
+    
       SetMs(0);
       SetDecimal(0);
       SetHour(0);
       SetDay(0);
       SetYear(0)
       SetLunar(0);
-    }
+    
+    alert("Contador reiniciado!")
+  }
+
+  const funcStopCount = () => {
+     alert("Estoy dentro del boton de stop")
+
+    setIsRunning(false);
+  }
+
+  const funcStartCount = () => {
+    setIsRunning(true);
+    alert("Empieza la cuenta!!")
+    console.log(isRunning)
   }
 
  
 //ESTO FUNCIONA
 
   useEffect(() => {
+    if (isRunning) {
     console.log("UseEffect");
     const interval = setInterval(() => {
       console.log("intervalo");
@@ -71,10 +88,11 @@ const Count = () => {
         } else {
           return prevMs + 1;
         }
+      
       });
     }, 1000);
     return () => clearInterval(interval);
-  }, []);
+  }}, [isRunning]);
 
  
 
@@ -90,6 +108,8 @@ const Count = () => {
         <Number value={decimal} />
         <Number value={ms} />
         <ButtonReset func={funcReset}/>
+        <ButtonStop func={funcStopCount}/>
+        <ButtonStart func={funcStartCount}/>
       </div>
     </>
   );
