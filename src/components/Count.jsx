@@ -52,18 +52,18 @@ const Count = () => {
     const interval = setInterval(() => {
       console.log("intervalo");
       SetMs((prevMs) => {
-        if (prevMs === 2) {
+        if (prevMs === 9) {
           SetDecimal((prevDec) => {
-            if (prevDec === 2) {
+            if (prevDec === 9) {
               console.log("Añado HORA");
               SetHour((prevHour) => {
-                if (prevHour ===2) {
+                if (prevHour === 9 ) {
                   console.log("Añado DIA");
                   SetDay((prevDay) => {
-                    if( prevDay === 2 ){
+                    if( prevDay === 9 ){
                         console.log("Añado MES");
                         SetYear((prevYear) => {
-                            if( prevYear === 2){
+                            if( prevYear === 9){
                                 console.log("Añado AÑO")
                                 SetLunar((prevLunarYear) => prevLunarYear + 1)
                                return 0;
