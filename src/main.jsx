@@ -12,7 +12,7 @@ root.render(
     <>
     
     <Count/>
-    <CountDown valueCountDown={5}/>
+    
     
     </>
 )

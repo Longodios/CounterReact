@@ -13,7 +13,7 @@ const Count = () => {
   console.log("Componente");
   const [isRunning, setIsRunning] = useState(false)
   const [ms, SetMs] = useState(0);
-  const [decimal, SetDecimal] = useState(0);
+  const [seconds, Setseconds] = useState(0);
   const [hour, SetHour] = useState(0);
   const [day, SetDay] = useState(0);
   const [year, SetYear] = useState(0);
@@ -22,7 +22,7 @@ const Count = () => {
   const funcReset  = () => {
     
       SetMs(0);
-      SetDecimal(0);
+      Setseconds(0);
       SetHour(0);
       SetDay(0);
       SetYear(0)
@@ -52,18 +52,18 @@ const Count = () => {
     const interval = setInterval(() => {
       console.log("intervalo");
       SetMs((prevMs) => {
-        if (prevMs === 9) {
-          SetDecimal((prevDec) => {
-            if (prevDec === 9) {
+        if (prevMs === 60) {
+          Setseconds((prevDec) => {
+            if (prevDec === 60) {
               console.log("Añado HORA");
               SetHour((prevHour) => {
-                if (prevHour === 9 ) {
+                if (prevHour === 24 ) {
                   console.log("Añado DIA");
                   SetDay((prevDay) => {
-                    if( prevDay === 9 ){
+                    if( prevDay === 31 ){
                         console.log("Añado MES");
                         SetYear((prevYear) => {
-                            if( prevYear === 9){
+                            if( prevYear === 12){
                                 console.log("Añado AÑO")
                                 SetLunar((prevLunarYear) => prevLunarYear + 1)
                                return 0;
@@ -105,7 +105,7 @@ const Count = () => {
         <Number value= {year}/>
         <Number value={day} />
         <Number value={hour} />
-        <Number value={decimal} />
+        <Number value={seconds} />
         <Number value={ms} />
         <ButtonReset func={funcReset}/>
         <ButtonStop func={funcStopCount}/>
